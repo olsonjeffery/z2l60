@@ -1,0 +1,15 @@
+{
+  "name": "dawdle",
+  "version": "0.0.0",
+  "description": "Serve up assets for dawdle scheme impl",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeff Olson <olson.jeffery@gmail.com>",
+  "license": "3-Clause BSD",
+  "dependencies": {
+    "express": "^4.8.5",
+    "underscore": "^1.6.0"
+  }
+}
