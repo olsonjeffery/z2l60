@@ -9,6 +9,7 @@
   "author": "Jeff Olson <olson.jeffery@gmail.com>",
   "license": "3-Clause BSD",
   "dependencies": {
+    "docco": "^0.6.3",
     "express": "^4.8.5",
     "underscore": "^1.6.0"
   }
