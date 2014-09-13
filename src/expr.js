@@ -1,3 +1,8 @@
+// This module contains the basic Atom types and a helper function to
+// decide, based on the input, which type to use (we're only supporting
+// Numeric and Symbol atoms for now). Lists, the other fundamental
+// expression (let's not worry about things like pairs, for now), are
+// built up in `parse.tokensToExpr()`.
 define([], function() {
     // ### Numeric
     //

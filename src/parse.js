@@ -45,16 +45,26 @@ define(['src/expr'], function(expr) {
 	    throw "bad input to tokensToExpr";
 	}
 
+	// This `if/else if/else` structure is running through the
+	// `curr` token and deciding how to handle consumering it
+	// and then returning it
 	var curr = tokens.shift();
 	if (curr === '(') {
+	    // In the case of an opening bracket, we know we're entering
+	    // a list, so we begin to work through it until the front of the
+	    // tokens array is the corresponding closing bracket
 	    var list = [];
 	    while (tokens[0] !== ')') {
 		list.push(tokensToExpr(tokens));
 	    }
 	    return list;
 	} else if (curr === ')') {
+	    // This would be an error condition that would only arise if
+	    // this function were handed an array of tokens with a `)` as
+	    // the first argument
 	    throw "whoops didn't expect this!";
 	} else {
+	    // everything else is an atom
 	    return expr.newAtom(curr);
 	}
     };

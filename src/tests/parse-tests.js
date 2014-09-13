@@ -21,7 +21,6 @@ define(['chai', 'src/parse', 'src/expr'], function(chai, parse, expr) {
         });
         test('stringToTokens() converts "( list 1 2 )" to a 5 token result', function() {
             var result = parse.stringToTokens('( list 1 2 )');
-            console.log(result);
             result.length.should.equal(5);
         });
         test('stringToTokens() converts "(foo (42))" to a 6 token result', function() {

@@ -24,6 +24,7 @@ require(['require', 'chai', 'mocha', 'zepto'], function(require, chai){
     require([
         'src/tests/parse-tests',
         'src/tests/expr-tests',
+        'src/tests/env-tests',
     ], function(require) {
         mocha.run();
     });
