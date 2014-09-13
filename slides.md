@@ -12,17 +12,7 @@ Improving Enterprises<br />
 
 class: center, middle
 
-# ...
-
----
-
-# AGENDA
-
-1. Who benefits; whose time is wasted
-2. A framework
-3. The fundamental Lisp concept(s)
-4. `dawdle`, a scheme implemented in JavaScript
-5. Beyond the first essay
+# https://github.com/olsonjeffery/z1l60
 
 ---
 
@@ -66,7 +56,41 @@ aka `sexprs`, `sexps`, `symbolic expressions`, etc etc etc etc etc etc etc
 
 # Eww, prefix notation!
 
-- S-expression from before: `(* 2 (+ 24))
+- S-expression from before: `(* 2 (+ 24))`
 - Infix notation version: `(2 * (3 + 4))`
 
-# CONCLUSION
+---
+
+# Components of our scheme interpreter
+
+- Parsing
+- S-Expression stuff
+- Environment
+- Builtin/global procedures
+- Evaluation
+- REPL
+
+---
+
+class: center, middle
+
+# Into the fray!
+
+https://github.com/olsonjeffery/z1l60
+
+---
+
+# Beyond the first Norvig essay
+
+---
+
+# Tail Call Optimization
+
+- Trampolines
+- "Cheney on the M.T.A."
+
+---
+
+class: center, middle
+
+# R7RS: Just google it
