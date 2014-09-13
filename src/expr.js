@@ -29,10 +29,18 @@ define([], function() {
     var isList = function(input) {
 	return input instanceof Array;
     };
+    var print = function(inExpr) {
+        if (isList(inExpr)) {
+	    return '('+_.map(inExpr, print).join(' ')+')';
+	} else {
+	    return String(inExpr);
+	}
+    };
     return {
 	newAtom: newAtom,
 	isSymbol: isSymbol,
 	isNumeric: isNumeric,
-	isList: isList
+	isList: isList,
+	print: print
     };
 });
