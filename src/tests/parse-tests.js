@@ -4,6 +4,12 @@ define(['chai', 'src/parse', 'src/expr'], function(chai, parse, expr) {
         test('parse() is a function', function() {
             (typeof parse).should.equal('function');
         });
+	test('parse edge case weirdness', function() {
+	    var tokens = parse.stringToTokens('(if (quote foo) 42 187)');
+	    var outExpr = parse.tokensToExpr(tokens);
+	    console.log(JSON.stringify(tokens))
+	    outExpr.length.should.equal(4);
+	});
     });
     suite('parse:stringToTokens', function() {
         test('stringToTokens() is a function', function() {

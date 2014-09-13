@@ -18,8 +18,6 @@ define(['src/expr'], function(expr) {
 
         // Run through the provided string, building a new string with padding around brackets
         var tmpStr = ''
-        var last = '';
-        var curr = '';
         for(var ctr = 0; ctr < inputStr.length;ctr++) {
             var curr = inputStr[ctr];
             if (curr === '(' || curr === ')') {
@@ -28,6 +26,7 @@ define(['src/expr'], function(expr) {
                 tmpStr += curr;
             }
         }
+	console.log(tmpStr);
         // trim whitepsace and return an array of the input, split on whitespace
         return tmpStr.trim().split(/\s+/)
     };
@@ -57,6 +56,7 @@ define(['src/expr'], function(expr) {
 	    while (tokens[0] !== ')') {
 		list.push(tokensToExpr(tokens));
 	    }
+	    tokens.shift();
 	    return list;
 	} else if (curr === ')') {
 	    // This would be an error condition that would only arise if
@@ -74,6 +74,8 @@ define(['src/expr'], function(expr) {
     // The publically exported function that orchestrates
     // the previous steps.
     var parse = function(input) {
+	var tokens = stringToTokens(input);
+	return tokensToExpr(tokens);
     };
 
     // _IMPL NOTE:_ All of the individual functions

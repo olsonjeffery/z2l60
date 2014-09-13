@@ -19,7 +19,7 @@ define(['chai', 'src/env', 'src/expr'], function(chai, env, expr) {
 		inner.outer.should.be.an.instanceOf(env.Env);
 	});
     });
-    suite('Env.find()', function() {
+    suite('Env:find', function() {
 	test('find() expects a Symbol as input', function() {
 	    var result = new env.Env();
 	    should.Throw(function() { result.find('bla blah');});
