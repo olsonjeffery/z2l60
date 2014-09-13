@@ -41,38 +41,36 @@ define(['chai', 'src/parse', 'src/expr'], function(chai, parse, expr) {
 	test('tokensToExpr() converts a tokenized "42" to a Numeric atom expr', function() {
             var tokens = parse.stringToTokens('42');
 	    var result = parse.tokensToExpr(tokens);
-	    result.should.be.an.instanceOf(expr.Numeric);
-	    result.should.not.be.an.instanceOf(Array);
+	    expr.isNumeric(result).should.equal(true);
 	});
 	test('tokensToExpr() converts a tokenized "foo" to a Symbol atom expr', function() {
             var tokens = parse.stringToTokens('foo');
 	    var result = parse.tokensToExpr(tokens);
-	    result.should.be.an.instanceOf(expr.Symbol);
-	    result.should.not.be.an.instanceOf(Array);
+	    expr.isSymbol(result).should.equal(true);
 	});
 	test('tokensToExpr() converts a tokenized "(foo 1 2)" to a List expr', function() {
             var tokens = parse.stringToTokens('(foo 1 2)');
 	    var result = parse.tokensToExpr(tokens);
-	    result.should.be.an.instanceOf(Array);
+	    expr.isList(result).should.equal(true);
 	    result.length.should.equal(3)
-	    result[0].should.be.an.instanceOf(expr.Symbol);
-	    result[0].val.should.equal('foo');
-	    result[1].should.be.an.instanceOf(expr.Numeric);
-	    result[1].val.should.equal(1)
-	    result[2].should.be.an.instanceOf(expr.Numeric);
-	    result[2].val.should.equal(2)
+	    expr.isSymbol(result[0]).should.equal(true);
+	    result[0].should.equal('foo');
+	    expr.isNumeric(result[1]).should.equal(true);
+	    result[1].should.equal(1)
+	    expr.isNumeric(result[2]).should.equal(true);
+	    result[2].should.equal(2)
 	});
 	test('tokensToExpr() converts a tokenized "(foo (42))" to a List expr', function() {
             var tokens = parse.stringToTokens('(foo (42))');
 	    var result = parse.tokensToExpr(tokens);
-	    result.should.be.an.instanceOf(Array);
+	    expr.isList(result).should.equal(true);
 	    result.length.should.equal(2)
-	    result[0].should.be.an.instanceOf(expr.Symbol);
-	    result[0].val.should.equal('foo');
-	    result[1].should.be.an.instanceOf(Array);
+	    expr.isSymbol(result[0]).should.equal(true);
+	    result[0].should.equal('foo');
+	    expr.isList(result[1]).should.equal(true);
 	    result[1].length.should.equal(1)
-	    result[1][0].should.be.an.instanceOf(expr.Numeric);
-	    result[1][0].val.should.equal(42)
+	    expr.isNumeric(result[1][0]).should.equal(true);
+	    result[1][0].should.equal(42)
 	});
     });
 });

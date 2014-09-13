@@ -26,13 +26,13 @@ define(['chai', 'src/env', 'src/expr'], function(chai, env, expr) {
 	});
 	test('find() should return the current Env when it contains the needle', function() {
 	    var inner = new env.Env({needle: 42});
-	    var actual = inner.find(new expr.Symbol('needle'));
+	    var actual = inner.find('needle');
 	    actual.should.equal(inner);
 	});
 	test('find() should return the outer Env when it is the one that contains the needle', function() {
 	    var outer = new env.Env({needle: 42});
 	    var inner = new env.Env({}, outer);
-	    var actual = inner.find(new expr.Symbol('needle'));
+	    var actual = inner.find('needle');
 	    actual.should.equal(outer);
 	});
 	test('find() should throw an error when it has no outer and does not contain the needle', function() {

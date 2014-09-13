@@ -33,17 +33,17 @@ define(['underscore', 'src/expr'], function(_, expr) {
 	// ### find
 	//
 	// Will return the `Env` instance that contains the provided `needle`,
-	// which must be an `expr.Symbol` instance.
+	// which must be a Symbol
 	self.find = function(needle) {
-	    if((needle instanceof expr.Symbol) === false) {
+	    if(expr.isSymbol(needle) === false) {
 		throw "Env.find() expects a Symbol argument";
 	    }
-	    if(typeof self.params[needle.val] !== 'undefined') {
+	    if(typeof self.params[needle] !== 'undefined') {
 	        // I'll take it!
 		return self;
 	    } else if (self.outer === null) {
 		// If there's no outer, we should error out.
-		throw "Can't find needle '"+needle.val+"' before hitting outer-most Env context";
+		throw "Can't find needle '"+needle+"' before hitting outer-most Env context";
 	    } else {
 		// Otherwise let's dive in.
 		return outer.find(needle);
@@ -51,7 +51,19 @@ define(['underscore', 'src/expr'], function(_, expr) {
 	};
     };
 
+    // ### addGlobals
+    //
+    // This drops the basic suite of procedures into an `Env` in order
+    // to make it meet the minimum standards of usefulness
+    var addGlobals = function(targetEnv) {
+	targetEnv.params['+'] = function() {
+	    var result = 0;
+	    return result;
+	};
+    };
+
     return {
-	Env: Env
+	Env: Env,
+	addGlobals: addGlobals
     };
 });
