@@ -18,35 +18,55 @@ class: center, middle
 
 # AGENDA
 
-1. why
-2. norvig's essay(s)
-3. parse
-4. environments
-5. eval
-6. conclusion
+1. Who benefits; whose time is wasted
+2. A framework
+3. The fundamental Lisp concept(s)
+4. `dawdle`, a scheme implemented in JavaScript
+5. Beyond the first essay
 
 ---
 
-# WHY
+# Who benefits; whose time is wasted
+
+- Lispers, `cons` thyself!
+- I procrastinated
+- Tractable
 
 ---
 
-# NORVIG'S ESSAY(s)
+# A Framework
 
-http://norvig.com/lispy.html
-
----
-
-# PARSE
+- Peter Norvig, Smart Person
+- http://norvig.com/lispy.html
+- Lean & mean
 
 ---
 
-# ENVIRONMENTS
+# The fundamental Lisp concept(s)
 
 ---
 
-# EVAL
+class: center, middle
+
+# s-expressions
+
+aka `sexprs`, `sexps`, `symbolic expressions`, etc etc etc etc etc etc etc
 
 ---
+
+# s-expressions
+
+.center[![Center-aligned image](/content/sexprs.png)]
+.center[Tree structure representing the s-expression for `(* 2 (+ 3 4))`]
+
+- `car` like the thing you drive around
+- `cdr` like "could-er"
+
+---
+
+# Eww, prefix notation!
+
+- S-expression from before: `(* 2 (+ 24))
+- Infix notation version: `(2 * (3 + 4))`
 
 # CONCLUSION
