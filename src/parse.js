@@ -1,4 +1,4 @@
-// This module concerns the takes of taking a string,
+// This module concerns the task of taking a string,
 // representing the "human readable" (ie code)
 // representing of an S-Expression and converting to a
 // representation (ie data) that is usable by the dawdle
@@ -38,6 +38,25 @@ define(['src/expr'], function(expr) {
     // them, recursively building up and returning a
     // single S-Expression
     var tokensToExpr = function(tokens) {
+	// validate input; no shirt, no shoes, no service
+	if (typeof tokens === 'undefined' ||
+	    (tokens instanceof Array) === false ||
+	    tokens.length === 0) {
+	    throw "bad input to tokensToExpr";
+	}
+
+	var curr = tokens.shift();
+	if (curr === '(') {
+	    var list = [];
+	    while (tokens[0] !== ')') {
+		list.push(tokensToExpr(tokens));
+	    }
+	    return list;
+	} else if (curr === ')') {
+	    throw "whoops didn't expect this!";
+	} else {
+	    return expr.newAtom(curr);
+	}
     };
 
     // ### parse()
@@ -52,5 +71,6 @@ define(['src/expr'], function(expr) {
     // for ease of testing (while still returning a single,
     // function from the module)
     parse.stringToTokens = stringToTokens;
+    parse.tokensToExpr = tokensToExpr;
     return parse;
 });

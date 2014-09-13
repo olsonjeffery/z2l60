@@ -23,6 +23,7 @@ require(['require', 'chai', 'mocha', 'zepto'], function(require, chai){
     // test runner
     require([
         'src/tests/parse-tests',
+        'src/tests/expr-tests',
     ], function(require) {
         mocha.run();
     });
