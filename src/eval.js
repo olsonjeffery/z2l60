@@ -65,6 +65,26 @@ define(['src/expr', 'src/env'], function(expr, env) {
 		return eval(body, new env.Env(params, inEnv));
 	    };
 	}
+	else if (inExpr[0] === 'begin') {
+	    // `begin` is a special form that is used to sequentially evaluate
+	    // any number of expressions, return the result of the last one.
+	    var outExpr = null;
+	    _.each(_.rest(inExpr), function(currExpr) {
+		outExpr = eval(currExpr, inEnv);
+	    });
+	    return outExpr;
+	}
+	else {
+	    // Finally, if we reach this point and none of the other cases have
+	    // matched, then that means we are invoking a procedure. Every entry in the
+	    // input list (including the first) is evaluated, and then it is assumed that
+	    // the first one will resolve to a function/lambda, which is then invoked
+	    // with the remaining items.
+	    var evaldArgs = _.map(inExpr, function(currExpr) {
+		return eval(currExpr, inEnv);
+	    });
+	    return _.first(evaldArgs).apply({}, _.rest(evaldArgs));
+	}	
     };
 
     return eval;

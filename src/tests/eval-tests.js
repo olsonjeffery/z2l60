@@ -59,5 +59,17 @@ define(['chai', 'src/eval', 'src/expr', 'src/env', 'src/parse'], function(chai, 
 	    (typeof outExpr).should.equal('function');
 	    outExpr(42).should.equal(42);
 	});
+	test('begin should run each expr in sequence and return the result of the last expression', function() {
+	    var innerEnv = new env.Env();
+	    var inExpr = parse('(begin (define foo 42) foo)');
+	    var outExpr = eval(inExpr, innerEnv);
+	    outExpr.should.equal(42);
+	});
+	test('procedure invocation works', function() {
+	    var innerEnv = new env.Env();
+	    var inExpr = parse('(begin (define foo (lambda (x) x)) (foo 42))');
+	    var outExpr = eval(inExpr, innerEnv);
+	    outExpr.should.equal(42);
+	});
     });
 });
